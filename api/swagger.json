@@ -1,0 +1,121 @@
+{
+    "info": {
+      "title": "GitHub VCR",
+      "version": "0.0.1",
+      "description": "GitHub VCR API"
+    },
+    "basePath": "/api/v1",
+    "swagger": "2.0",
+    "paths": {
+      "/{userID}": {
+        "get": {
+          "description": "Retrieve a DID by user ID",
+          "tags": [
+            "DID"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "did",
+              "description": "Retrieve a DID",
+              "required": true,
+              "type": "string",
+              "value": "did:alice"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "DID Document",
+              "type": "object"
+            },
+            "404": {
+              "description": "DID not found"
+            },
+            "405": {
+              "description": "Validation exception"
+            }
+          }
+        },
+        "post": {
+            "description": "Store a DID",
+            "tags": [
+              "DID"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "path",
+                "name": "did",
+                "description": "Store a DID",
+                "required": true,
+                "type": "object",
+                "value": ""
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "Stored DID successfully",
+                "type": "string"
+            }
+          }
+        }
+      },
+      "/version": {
+        "get": {
+          "tags": [
+            "System"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "successful response",
+              "type": "object",
+              "properties": {
+                "version": {
+                  "type": "string",
+                  "example": "0.0.1"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/.well-known/webfinger": {
+        "get": {
+          "tags": [
+            "System"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "query",
+              "name": "resource",
+              "description": "resource to check",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Webfinger Record",
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {},
+    "responses": {},
+    "parameters": {},
+    "securityDefinitions": {},
+    "tags": []
+  }
